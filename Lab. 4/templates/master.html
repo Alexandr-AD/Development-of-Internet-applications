@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+<ul>
+    <h3> Волейболисты </h3>
+    {% for players in data.players%}
+       <li><a href="{% url 'players_url' players.id %}">{{ players.title }}</a> </li>
+    {% empty %}
+       <li>Список пуст</li>
+    {% endfor %}
+</ul>
+{% endblock %}

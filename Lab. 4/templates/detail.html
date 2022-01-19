@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Вид: {% endblock %}
+
+{% block content %}
+<ul>
+    <div style="text-align: center">
+    {% if data.id == 1 %}
+         <img src="{% static 'images/image1.jpg' %}" style="width:800px">
+    {% elif data.id == 2 %}
+         <img src="{% static 'images/image2.jpg' %}" style="width:800px">
+    {% else %}
+         <img src="{% static 'images/image3.jpg' %}" style="width:400px">
+    {% endif %}
+    </div>
+    <table border="1" width="100%" cellpadding="5">
+        <tr>
+            <th> ФИО </th>
+            <th> Дата рождения </th>
+            <th> Рост </th>
+            <th> Высота съёма </th>
+        </tr>
+        <tr>
+            {% for players in data.players_info %}
+              {% if players.id == data.id %}
+                <td>{{ players.name }}</td>
+                <td>{{ players.datebirth }}</td>
+                <td> {{ players.heigth }}</td>
+                <td>{{ players.attack }}</td>
+              {% endif %}
+           {% endfor %}
+        </tr>
+    </table>
+    <div style="text-align: center">
+        <li><a href="{% url 'home_url' %}">{{ 'Home' }}</a> </li>
+    </div>
+</ul>
+{% endblock %}
